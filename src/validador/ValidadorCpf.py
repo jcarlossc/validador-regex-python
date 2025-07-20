@@ -8,3 +8,4 @@ class ValidadorCpf(Validador):
             return re.fullmatch(regex, valor) is not None
         except Exception as e:
             print(f"Erro. A validaçao de cpf falhou: {e}")
+            return False
