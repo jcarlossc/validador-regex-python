@@ -8,3 +8,4 @@ class ValidadorEmail(Validador):
             return re.fullmatch(regex, valor) is not None
         except Exception as e:
             print(f"Erro. Avalidação de email falhou: {e}")
+            return False
