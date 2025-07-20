@@ -3,12 +3,14 @@ from src.validador.ValidadorCnpj import ValidadorCnpj
 from src.validador.ValidadorCpf import ValidadorCpf
 from src.validador.ValidadorEmail import ValidadorEmail
 from src.validador.ValidadorUrl import ValidadorUrl
+from src.validador.ValidadorIp import ValidadorIp
 
 # Instâncias das estratégias de validação.
 validador_email = ValidadorEmail()
 validador_cpf = ValidadorCpf()
 validador_cnpj = ValidadorCnpj()
 validador_url = ValidadorUrl()
+validador_ip = ValidadorIp()
 
 # Contexto de validação.
 contexto = ContextoDeValidacao(validador_email)
@@ -36,3 +38,9 @@ contexto.setar_validador(validador_url)
 print(f"'https://www.google.com' é uma url válida? {contexto.executar_validacao('https://www.google.com')}")
 print(f"'http://localhost:8080/' é uma url válida? {contexto.executar_validacao('http://localhost:8080/')}")
 print(f"'www.invalida' é uma url válida? {contexto.executar_validacao('www.invalid')}")
+
+print("\n--- Validação de IP ---")
+contexto.setar_validador(validador_ip)
+print(f"'192.168.1.1' é um ip válido? {contexto.executar_validacao('192.168.1.1')}")
+print(f"'255.255.255.255' é um ip válido? {contexto.executar_validacao('255.255.255.255')}")
+print(f"'256.0.0.1' é um ipválido? {contexto.executar_validacao('256.0.0.1')}")
