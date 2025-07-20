@@ -1,7 +1,9 @@
 from src.validador.ContextoDeValidacao import ContextoDeValidacao
 from src.validador.ValidadorCnpj import ValidadorCnpj
 from src.validador.ValidadorCpf import ValidadorCpf
+from src.validador.ValidadorData import ValidadorData
 from src.validador.ValidadorEmail import ValidadorEmail
+from src.validador.ValidadorHora import ValidadorHora
 from src.validador.ValidadorMonetarioBr import ValidadorMonetarioBr
 from src.validador.ValidadorUrl import ValidadorUrl
 from src.validador.ValidadorIp import ValidadorIp
@@ -13,6 +15,8 @@ validador_cnpj = ValidadorCnpj()
 validador_url = ValidadorUrl()
 validador_ip = ValidadorIp()
 validador_monetario_br = ValidadorMonetarioBr()
+validador_data = ValidadorData()
+validador_hora = ValidadorHora()
 
 # Contexto de validação.
 contexto = ContextoDeValidacao(validador_email)
@@ -53,3 +57,17 @@ print(f"'R$ 1.234,56' é um valor válido? {contexto.executar_validacao('R$ 1.23
 print(f"'1234.56' é um valor válido? {contexto.executar_validacao('1234.56')}")
 print(f"'50,00' é um valor válido? {contexto.executar_validacao('50,00')}")
 print(f"'R$ 1,234.56' é um valor válido? {contexto.executar_validacao('R$ 1,234.56')}")
+
+print("\n--- Validação de Data ---")
+contexto.setar_validador(validador_data)
+print(f"'19/07/2025' é uma data válida? {contexto.executar_validacao('19/07/2025')}")
+print(f"'01/01/1900' é uma data válida? {contexto.executar_validacao('01/01/1900')}")
+print(f"'32/01/2025' é uma data válida? {contexto.executar_validacao('32/01/2025')}") 
+print(f"'01-01-2023' é uma data válida? {contexto.executar_validacao('01-01-2023')}")
+
+print("\n--- Validação de Hora ---")
+contexto.setar_validador(validador_hora)
+print(f"'14:30' é válido? {contexto.executar_validacao('14:30')}")
+print(f"'23:59:59' é válido? {contexto.executar_validacao('23:59:59')}")
+print(f"'25:00' é válido? {contexto.executar_validacao('25:00')}") # Hora inválida
+print(f"'10:65' é válido? {contexto.executar_validacao('10:65')}")
