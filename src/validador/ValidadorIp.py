@@ -3,18 +3,18 @@ from src.validador.Validador import Validador
 
 class ValidadorIp(Validador):
     """
-    Estratégia concreta para validação de endereços IP no formato IPv4.
+    Estratégia concreta para validação de endereços IP no formato ipv4.
 
     Verifica se o valor consiste em quatro octetos numéricos separados por pontos.
     """
     def validar(self, valor: str) -> bool:
         """
-        Valida um endereço IPv4 usando uma expressão regular.
+        Valida um endereço ipv4 usando uma expressão regular.
 
         Verifica se cada octeto numérico está dentro do intervalo válido (0-255).
 
         Args:
-            value (str): O endereço IP a ser validado.
+            value (str): O endereço ip a ser validado.
 
         Returns:
             bool: True se o ip for válido, False se inválido.
