@@ -8,4 +8,8 @@ class ContextoDeValidacao:
         self._validador = validador
 
     def executar_validacao(self, valor: str) -> bool:
-        return self._validador.validar(valor)        
+        try:
+            return self._validador.validar(valor)        
+        except Exception as e:
+            print(f"Erro. A validação falhou: {e}")
+            return False

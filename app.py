@@ -69,5 +69,5 @@ print("\n--- Validação de Hora ---")
 contexto.setar_validador(validador_hora)
 print(f"'14:30' é válido? {contexto.executar_validacao('14:30')}")
 print(f"'23:59:59' é válido? {contexto.executar_validacao('23:59:59')}")
-print(f"'25:00' é válido? {contexto.executar_validacao('25:00')}") # Hora inválida
+print(f"'25:00' é válido? {contexto.executar_validacao('25:00')}")
 print(f"'10:65' é válido? {contexto.executar_validacao('10:65')}")
