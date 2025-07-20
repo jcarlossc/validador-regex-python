@@ -1,10 +1,12 @@
 from src.validador.ContextoDeValidacao import ContextoDeValidacao
+from src.validador.ValidadorCnpj import ValidadorCnpj
 from src.validador.ValidadorCpf import ValidadorCpf
 from src.validador.ValidadorEmail import ValidadorEmail
 
 # Instâncias das estratégias de validação.
 validador_email = ValidadorEmail()
 validador_cpf = ValidadorCpf()
+validador_cnpj = ValidadorCnpj()
 
 # Contexto de validação.
 contexto = ContextoDeValidacao(validador_email)
@@ -20,3 +22,9 @@ print(f"'12345678900' é um cpf válido? {contexto.executar_validacao('123456789
 print(f"'123.456.789.00' é um cpf válido? {contexto.executar_validacao('123.456.789.00')}")
 print(f"'123.456.789-000' é um cpf válido? {contexto.executar_validacao('123.456.789-000')}")
 
+print("\n--- Validação de CNPJ ---")
+contexto.setar_validador(validador_cnpj)
+print(f"'11.222.333/0001-44' é um cnpj válido? {contexto.executar_validacao('11.222.333/0001-44')}")
+print(f"'11222333000144' é um cnpj válido? {contexto.executar_validacao('11222333000144')}")
+print(f"'11.222.333/0001-444' é um cnpj válido? {contexto.executar_validacao('11.222.333/0001-444')}")
+print(f"'11.222.333/0001.44' é um cnpj válido? {contexto.executar_validacao('11.222.333/0001.44')}")
