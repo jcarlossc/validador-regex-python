@@ -2,6 +2,7 @@ from src.validador.ContextoDeValidacao import ContextoDeValidacao
 from src.validador.ValidadorCnpj import ValidadorCnpj
 from src.validador.ValidadorCpf import ValidadorCpf
 from src.validador.ValidadorEmail import ValidadorEmail
+from src.validador.ValidadorMonetarioBr import ValidadorMonetarioBr
 from src.validador.ValidadorUrl import ValidadorUrl
 from src.validador.ValidadorIp import ValidadorIp
 
@@ -11,6 +12,7 @@ validador_cpf = ValidadorCpf()
 validador_cnpj = ValidadorCnpj()
 validador_url = ValidadorUrl()
 validador_ip = ValidadorIp()
+validador_monetario_br = ValidadorMonetarioBr()
 
 # Contexto de validação.
 contexto = ContextoDeValidacao(validador_email)
@@ -44,3 +46,10 @@ contexto.setar_validador(validador_ip)
 print(f"'192.168.1.1' é um ip válido? {contexto.executar_validacao('192.168.1.1')}")
 print(f"'255.255.255.255' é um ip válido? {contexto.executar_validacao('255.255.255.255')}")
 print(f"'256.0.0.1' é um ipválido? {contexto.executar_validacao('256.0.0.1')}")
+
+print("\n--- Validação de Valores Monetários ---")
+contexto.setar_validador(validador_monetario_br)
+print(f"'R$ 1.234,56' é um valor válido? {contexto.executar_validacao('R$ 1.234,56')}")
+print(f"'1234.56' é um valor válido? {contexto.executar_validacao('1234.56')}")
+print(f"'50,00' é um valor válido? {contexto.executar_validacao('50,00')}")
+print(f"'R$ 1,234.56' é um valor válido? {contexto.executar_validacao('R$ 1,234.56')}")
